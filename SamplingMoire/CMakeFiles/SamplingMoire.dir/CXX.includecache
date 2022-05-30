@@ -7,9 +7,17 @@
 #IncludeRegexTransform: 
 
 /home/robo/cuda_cv_test/SamplingMoire/src/main.cpp
+getopt.h
+-
 stdio.h
 -
+iostream
+-
 opencv2/opencv.hpp
+-
+opencv2/videoio.hpp
+-
+opencv2/highgui.hpp
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
