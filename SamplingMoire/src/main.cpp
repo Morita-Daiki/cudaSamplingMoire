@@ -61,20 +61,28 @@ int main(int argc, char **argv)
     }
 
     cv::VideoWriter writer;
-    int w, h, fourcc;
+    int width, height, fourcc, frame_length;
     double fps;
     fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
-    w = (int)video.get(cv::CAP_PROP_FRAME_WIDTH);
-    h = (int)video.get(cv::CAP_PROP_FRAME_HEIGHT);
+    width = (int)video.get(cv::CAP_PROP_FRAME_WIDTH);
+    height = (int)video.get(cv::CAP_PROP_FRAME_HEIGHT);
     fps = video.get(cv::CAP_PROP_FPS);
+    frame_length = video.get(cv::CAP_PROP_FRAME_COUNT);
     // fps = 1;
-    writer.open(output_file, fourcc, fps, cv::Size(w, h));
+    writer.open(output_file, fourcc, fps, cv::Size(width, height));
+
+    std::cout << "frame width :" << width << std::endl;
+    std::cout << "frame height:" << height << std::endl;
+    std::cout << "frame length:" << frame_length << std::endl;
+    std::cout << "frame / sec :" << fps << std::endl;
 
     cv::Mat image;
     std::cout << "start loop" << std::endl;
 
-    while (video.isOpened())
+    for (int counter = 0; counter < frame_length; counter++)
     {
+        if (counter % 10 == 0)
+            std::cout << (100.0 * counter / frame_length) << "%% complete\n";
         video >> image;
         writer << image;
     }
