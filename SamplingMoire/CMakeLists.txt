@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 2.8)
+project( SamplingMoire CXX)
+find_package( OpenCV REQUIRED )
+include_directories( ${OpenCV_INCLUDE_DIRS} )
+add_executable( SamplingMoire src/main.cpp )
+target_link_libraries( SamplingMoire ${OpenCV_LIBS} )
