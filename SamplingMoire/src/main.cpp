@@ -88,12 +88,12 @@ int main(int argc, char **argv)
     for (int counter = 0; counter < frame_length; counter++)
     {
         video >> image;
+        // cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
         cv::cuda::GpuMat image_on_gpu(image);
         cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
         gray_on_gpu.download(gray);
         if (counter % 10 == 0)
             std::cout << (100.0 * counter / frame_length) << "%% complete\n";
-        // video >> image;
         writer << gray;
     }
     std::cout << "end loop" << std::endl;
