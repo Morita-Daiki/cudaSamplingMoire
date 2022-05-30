@@ -1,9 +1,14 @@
 #include <getopt.h>
+
 #include <stdio.h>
 #include <iostream>
+
+#include <opencv2/core.hpp>
 #include <opencv2/opencv.hpp>
-#include <opencv2/videoio.hpp>
 #include <opencv2/highgui.hpp>
+#include <opencv2/videoio.hpp>
+#include <opencv2/core/cuda.hpp>
+#include <opencv2/cudaimgproc.hpp>
 
 int main(int argc, char **argv)
 {
@@ -76,15 +81,20 @@ int main(int argc, char **argv)
     std::cout << "frame length:" << frame_length << std::endl;
     std::cout << "frame / sec :" << fps << std::endl;
 
-    cv::Mat image;
+    cv::Mat image, gray;
+    cv::cuda::GpuMat gray_on_gpu;
     std::cout << "start loop" << std::endl;
 
     for (int counter = 0; counter < frame_length; counter++)
     {
+        video >> image;
+        cv::cuda::GpuMat image_on_gpu(image);
+        cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
+        gray_on_gpu.download(gray);
         if (counter % 10 == 0)
             std::cout << (100.0 * counter / frame_length) << "%% complete\n";
-        video >> image;
-        writer << image;
+        // video >> image;
+        writer << gray;
     }
     std::cout << "end loop" << std::endl;
 
