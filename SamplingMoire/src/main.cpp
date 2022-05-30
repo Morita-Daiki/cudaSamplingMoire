@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 
     cv::Mat image, gray;
     cv::cuda::GpuMat gray_on_gpu;
-    std::cout << "start loop" << std::endl;
+    std::cout << "start loop\n\n";
 
     for (int counter = 0; counter < frame_length; counter++)
     {
@@ -93,16 +93,14 @@ int main(int argc, char **argv)
         cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
         gray_on_gpu.download(gray);
 
-        if (counter % 10 == 9 || counter == (frame_length - 1))
-            std::cout
-                << std::setw(4) << counter + 1
-                << "/" << frame_length
-                << " =" << std::setw(4) << int(100.0 * counter / frame_length)
-                << "%% complete\n";
-
+        if (counter % 10 == 0 || counter == (frame_length - 1))
+            std::cout << "\r"
+                      << std::setw(4) << counter + 1 << " / " << frame_length
+                      << " =" << std::setw(4) << int(100.0 * counter / (frame_length - 1))
+                      << " % complete";
         writer << gray;
     }
-    std::cout << "end loop" << std::endl;
+    std::cout << "\n\nend loop" << std::endl;
 
     return 0;
 }
