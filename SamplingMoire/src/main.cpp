@@ -43,34 +43,42 @@ int main(int argc, char **argv)
             abort();
         }
     }
-    std::cout << "source:" << source_file << std::endl;
-    std::cout << "out:" << output_file << std::endl;
-    std::cout << "num:" << num << std::endl;
-    std::cout << "direction:" << direction << std::endl;
+    std::cout << "\n";
+    std::cout << "Source File Name  :" << source_file << std::endl;
+    std::cout << "Output File Name  :" << output_file << std::endl;
+    std::cout << "Sampling Size[px] :" << num << std::endl;
+    std::cout << "Sampling Direction:" << direction << std::endl;
+
+    cv::Mat frame;
+    cv::VideoCapture video;
+    video.open(source_file);
+    std::cout << "\nOpening the Source File" << std::endl;
+
+    if (!video.isOpened())
+    {
+        std::cout << "Can't open the Source File" << std::endl;
+        return 0;
+    }
+
+    cv::VideoWriter writer;
+    int w, h, fourcc;
+    double fps;
+    fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
+    w = (int)video.get(cv::CAP_PROP_FRAME_WIDTH);
+    h = (int)video.get(cv::CAP_PROP_FRAME_HEIGHT);
+    fps = video.get(cv::CAP_PROP_FPS);
+    // fps = 1;
+    writer.open(output_file, fourcc, fps, cv::Size(w, h));
+
+    cv::Mat image;
+    std::cout << "start loop" << std::endl;
+
+    while (video.isOpened())
+    {
+        video >> image;
+        writer << image;
+    }
+    std::cout << "end loop" << std::endl;
+
     return 0;
-    // if ((argc - 1) % 2 != 0)
-    // {
-    //     printf("usage: SamplingMoire.out <Video_Path>\n");
-    //     return -1;
-    // }
-    // cv::Mat frame;
-    // cv::VideoCapture video;
-    // video.open(argv[1]);
-    // if (!video.isOpened())
-    //     return 0;
-
-    // cv::VideoWriter writer;
-    // int w, h, fourcc;
-    // double fps;
-    // fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
-    // w = (int)video.get(cv::CAP_PROP_FRAME_WIDTH);
-    // h = (int)video.get(cv::CAP_PROP_FRAME_HEIGHT);
-    // fps = video.get(cv::CAP_PROP_FPS);
-    // writer.open(argv[2], fourcc, fps, cv::Size(w, h));
-
-    // cv::Mat image;
-    // while (true)
-    // {
-    //     video >> image;
-    // }
 }

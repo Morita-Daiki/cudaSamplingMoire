@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon May 30 19:07:15 2022
+# Make data base, printed on Mon May 30 22:07:57 2022
 
 # Variables
 
@@ -125,7 +125,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 34734
+GIO_LAUNCHED_DESKTOP_FILE_PID = 73276
 # automatic
 %F = $(notdir $%)
 # environment
@@ -159,7 +159,7 @@ VSCODE_CODE_CACHE_PATH = /home/robo/.config/Code/CachedData/c3511e6c69bb39013c4a
 # environment
 LOGNAME = robo
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -193,7 +193,7 @@ SHLVL = 0
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-3bf53560-5ee8-4044-b2d2-1b79b6fd18eb.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-04028333-d9ad-43fc-ab5b-4f3c6c8b6ee2.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -277,10 +277,10 @@ LC_ADDRESS = ja_JP.UTF-8
 # environment
 LANG = C
 # environment
- 
-VSCODE_PID = 34790
+VSCODE_PID = 73322
 # variable set hash-table stats:
 # Load=133/1024=13%, Rehash=0, Collisions=23/155=15%
+ 
 
 # Pattern-specific Variable Values
 
@@ -340,12 +340,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 132 B / avg = 9 B
-# current buf: size = 8162 B / used = 132 B / count = 14 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 130 B / avg = 9 B
+# current buf: size = 8162 B / used = 130 B / count = 14 / avg = 9 B
 
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Mon May 30 19:07:15 2022
+# Finished Make data base on Mon May 30 22:07:57 2022
 
  
