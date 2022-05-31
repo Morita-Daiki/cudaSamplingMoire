@@ -94,15 +94,15 @@ int main(int argc, char **argv)
         cv::cuda::resize(gray_on_gpu, scaled_on_gpu, cv::Size(1000, 1000));
         scaled_on_gpu.download(gray);
 
-        if (counter % 10 == 0 || counter == (frame_length - 1))
-        {
-            std::cout << "\r"
-                      << std::setw(4) << counter + 1
-                      << " / " << frame_length
-                      << " =" << std::setw(4) << int(100.0 * counter / (frame_length - 1))
-                      << " % "
-                      << "complete";
-        }
+        // if (counter % 10 == 0 || counter == (frame_length - 1))
+        // {
+        //     std::cout << "\r"
+        //               << std::setw(4) << counter + 1
+        //               << " / " << frame_length
+        //               << " =" << std::setw(4) << int(100.0 * counter / (frame_length - 1))
+        //               << " % "
+        //               << "complete";
+        // }
         writer << gray;
     }
     std::cout << "\n\nend loop" << std::endl;
