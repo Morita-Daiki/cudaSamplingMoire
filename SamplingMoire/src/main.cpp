@@ -33,15 +33,17 @@ int main(int argc, char **argv)
     std::string source_file = "default_source_file.mp4",
                 output_file = "default_output_file.mp4";
     int num = 2, direction = 0;
+    bool frame_length_limit = false;
 
     struct option longopts[] = {
         {"sourceFile", required_argument, NULL, 's'},
         {"outFile", required_argument, NULL, 'o'},
         {"numSampling", required_argument, NULL, 'n'},
         {"direction", required_argument, NULL, 'd'},
+        {"testmode", no_argument, NULL, 't'},
         {0, 0, 0, 0}};
     int opt, longindex;
-    while ((opt = getopt_long(argc, argv, "s:o:n:d", longopts, &longindex)) != -1)
+    while ((opt = getopt_long(argc, argv, "s:o:n:d:t", longopts, &longindex)) != -1)
     {
         printf("opt info %d %s <-- %s\n", longindex, longopts[longindex].name, optarg);
         switch (opt)
@@ -58,6 +60,10 @@ int main(int argc, char **argv)
         case 'd':
             direction = std::stoi(optarg);
             break;
+        case 't':
+            frame_length_limit = true;
+            break;
+
         case 'h':
         case '?':
             std::cout << "help menu";
@@ -100,13 +106,14 @@ int main(int argc, char **argv)
     std::cout << "frame / sec :" << fps << std::endl;
 
     cv::Mat image, image_re, image_im, image_re_32, image_im_32, phase, phase32;
-    cv::cuda::GpuMat index_image_on_gpu[num * 2];
-    cv::cuda::GpuMat gray_on_gpu, scaled_on_gpu, filterd_on_gpu32_re, filterd_on_gpu32_im, gray_on_gpu32, filterd_on_gpu;
+    // cv::cuda::GpuMat index_image_on_gpu[num * 2];
+    cv::cuda::GpuMat gray_on_gpu, gray_smooth_on_gpu, scaled_on_gpu, filterd_on_gpu32_re, filterd_on_gpu32_im, gray_on_gpu32, filterd_on_gpu;
 
     cv::Mat kernel_re, kernel_im;
     int kernel_size = num * 2 - 1;
     kernel_re = cv::Mat::ones(1, kernel_size, CV_32FC1);
     kernel_im = cv::Mat::ones(1, kernel_size, CV_32FC1);
+    cv::Ptr<cv::cuda::Filter> smooth_filter = cv::cuda::createBoxFilter(CV_8U, CV_8U, cv::Size(1, kernel_size), cv::Point(-1, -1), cv::BORDER_CONSTANT);
 
     for (int i = 0; i < kernel_size; i++)
     {
@@ -121,13 +128,16 @@ int main(int argc, char **argv)
 
     std::cout << "start loop";
 
+    if (frame_length_limit == true)
+        frame_length = 1;
     for (int counter = 0; counter < frame_length; counter++)
     {
         video >> image;
 
         cv::cuda::GpuMat image_on_gpu(image);
         cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
-        gray_on_gpu.convertTo(gray_on_gpu32, CV_32FC1);
+        smooth_filter->apply(gray_on_gpu, gray_smooth_on_gpu);
+        gray_smooth_on_gpu.convertTo(gray_on_gpu32, CV_32FC1);
         cv::Ptr<cv::cuda::Filter> filter_re =
             cv::cuda::createLinearFilter(CV_32FC1, CV_32FC1, kernel_re, cv::Point(-1, -1), cv::BORDER_CONSTANT);
         cv::Ptr<cv::cuda::Filter> filter_im =
@@ -153,7 +163,10 @@ int main(int argc, char **argv)
             std::cout << min << "<= val <=" << max << std::endl;
             print_progress(counter, frame_length);
             cv::imshow("phase", phase);
-            cv::waitKey(1);
+            if (frame_length_limit)
+                cv::waitKey(0);
+            else
+                cv::waitKey(1);
         }
 
         writer << phase;
