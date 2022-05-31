@@ -99,7 +99,7 @@ int main(int argc, char **argv)
     std::cout << "frame length:" << frame_length << std::endl;
     std::cout << "frame / sec :" << fps << std::endl;
 
-    cv::Mat image, image_re, image_im, image_re_32, image_im_32;
+    cv::Mat image, image_re, image_im, image_re_32, image_im_32, phase, phase32;
     cv::cuda::GpuMat index_image_on_gpu[num * 2];
     cv::cuda::GpuMat gray_on_gpu, scaled_on_gpu, filterd_on_gpu32_re, filterd_on_gpu32_im, gray_on_gpu32, filterd_on_gpu;
 
@@ -141,18 +141,22 @@ int main(int argc, char **argv)
 
         double min, max;
         cv::minMaxLoc(image_re_32, &min, &max, NULL, NULL);
+
         image_re_32.convertTo(image_re, CV_8U, 255.0 / (max - min), min * 255.0 / (min - max));
         image_im_32.convertTo(image_im, CV_8U, 255.0 / (max - min), min * 255.0 / (min - max));
+        cv::phase(image_re_32, image_im_32, phase32);
+        cv::minMaxLoc(phase32, &min, &max, NULL, NULL);
+        phase32.convertTo(phase, CV_8U, 255.0 / (max - min), min * 255.0 / (min - max));
 
-        if (/* counter % 10 == 9 ||  */ counter == (frame_length - 1))
+        if (counter % 10 == 9 || counter == (frame_length - 1))
         {
             std::cout << min << "<= val <=" << max << std::endl;
             print_progress(counter, frame_length);
-            cv::imshow("gray", image_re);
-            cv::waitKey(0);
+            cv::imshow("phase", phase);
+            cv::waitKey(1);
         }
 
-        writer << image_re;
+        writer << phase;
     }
     std::cout << "\nend loop" << std::endl;
 
