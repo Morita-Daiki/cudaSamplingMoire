@@ -9,6 +9,7 @@
 #include <opencv2/videoio.hpp>
 #include <opencv2/core/cuda.hpp>
 #include <opencv2/cudaimgproc.hpp>
+#include <opencv2/cudawarping.hpp>
 
 int main(int argc, char **argv)
 {
@@ -74,7 +75,7 @@ int main(int argc, char **argv)
     fps = video.get(cv::CAP_PROP_FPS);
     frame_length = video.get(cv::CAP_PROP_FRAME_COUNT);
     // fps = 1;
-    writer.open(output_file, fourcc, fps, cv::Size(width, height));
+    writer.open(output_file, fourcc, fps, cv::Size(1000, 1000), false);
 
     std::cout << "frame width :" << width << std::endl;
     std::cout << "frame height:" << height << std::endl;
@@ -82,22 +83,26 @@ int main(int argc, char **argv)
     std::cout << "frame / sec :" << fps << std::endl;
 
     cv::Mat image, gray;
-    cv::cuda::GpuMat gray_on_gpu;
+    cv::cuda::GpuMat gray_on_gpu, scaled_on_gpu;
     std::cout << "start loop\n\n";
 
     for (int counter = 0; counter < frame_length; counter++)
     {
         video >> image;
-        // cv::cvtColor(image, gray, cv::COLOR_BGR2GRAY);
         cv::cuda::GpuMat image_on_gpu(image);
         cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
-        gray_on_gpu.download(gray);
+        cv::cuda::resize(gray_on_gpu, scaled_on_gpu, cv::Size(1000, 1000));
+        scaled_on_gpu.download(gray);
 
         if (counter % 10 == 0 || counter == (frame_length - 1))
+        {
             std::cout << "\r"
-                      << std::setw(4) << counter + 1 << " / " << frame_length
+                      << std::setw(4) << counter + 1
+                      << " / " << frame_length
                       << " =" << std::setw(4) << int(100.0 * counter / (frame_length - 1))
-                      << " % complete";
+                      << " % "
+                      << "complete";
+        }
         writer << gray;
     }
     std::cout << "\n\nend loop" << std::endl;

@@ -25,6 +25,8 @@ opencv2/core/cuda.hpp
 -
 opencv2/cudaimgproc.hpp
 -
+opencv2/cudawarping.hpp
+-
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp
@@ -381,6 +383,12 @@ assert.h
 -
 
 /usr/local/include/opencv4/opencv2/cudaimgproc.hpp
+opencv2/core/cuda.hpp
+/usr/local/include/opencv4/opencv2/opencv2/core/cuda.hpp
+opencv2/imgproc.hpp
+/usr/local/include/opencv4/opencv2/opencv2/imgproc.hpp
+
+/usr/local/include/opencv4/opencv2/cudawarping.hpp
 opencv2/core/cuda.hpp
 /usr/local/include/opencv4/opencv2/opencv2/core/cuda.hpp
 opencv2/imgproc.hpp

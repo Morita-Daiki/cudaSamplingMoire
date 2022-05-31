@@ -38,6 +38,7 @@ CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/core/version.hpp
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/cudaimgproc.hpp
+CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/cudawarping.hpp
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/dnn.hpp
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/dnn/dict.hpp
 CMakeFiles/SamplingMoire.dir/src/main.cpp.o: /usr/local/include/opencv4/opencv2/dnn/dnn.hpp
