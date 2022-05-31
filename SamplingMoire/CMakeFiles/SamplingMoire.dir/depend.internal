@@ -10,6 +10,7 @@ CMakeFiles/SamplingMoire.dir/src/main.cpp.o
  /usr/local/include/opencv4/opencv2/core/base.hpp
  /usr/local/include/opencv4/opencv2/core/bufferpool.hpp
  /usr/local/include/opencv4/opencv2/core/check.hpp
+ /usr/local/include/opencv4/opencv2/core/core.hpp
  /usr/local/include/opencv4/opencv2/core/cuda.hpp
  /usr/local/include/opencv4/opencv2/core/cuda.inl.hpp
  /usr/local/include/opencv4/opencv2/core/cuda_types.hpp
@@ -38,6 +39,7 @@ CMakeFiles/SamplingMoire.dir/src/main.cpp.o
  /usr/local/include/opencv4/opencv2/core/utils/tls.hpp
  /usr/local/include/opencv4/opencv2/core/version.hpp
  /usr/local/include/opencv4/opencv2/core/vsx_utils.hpp
+ /usr/local/include/opencv4/opencv2/cudafilters.hpp
  /usr/local/include/opencv4/opencv2/cudaimgproc.hpp
  /usr/local/include/opencv4/opencv2/cudawarping.hpp
  /usr/local/include/opencv4/opencv2/dnn.hpp
@@ -91,6 +93,9 @@ CMakeFiles/SamplingMoire.dir/src/main.cpp.o
  /usr/local/include/opencv4/opencv2/objdetect/face.hpp
  /usr/local/include/opencv4/opencv2/opencv.hpp
  /usr/local/include/opencv4/opencv2/opencv_modules.hpp
+ /usr/local/include/opencv4/opencv2/phase_unwrapping.hpp
+ /usr/local/include/opencv4/opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+ /usr/local/include/opencv4/opencv2/phase_unwrapping/phase_unwrapping.hpp
  /usr/local/include/opencv4/opencv2/photo.hpp
  /usr/local/include/opencv4/opencv2/stitching.hpp
  /usr/local/include/opencv4/opencv2/stitching/detail/blenders.hpp
@@ -104,6 +109,10 @@ CMakeFiles/SamplingMoire.dir/src/main.cpp.o
  /usr/local/include/opencv4/opencv2/stitching/detail/warpers.hpp
  /usr/local/include/opencv4/opencv2/stitching/detail/warpers_inl.hpp
  /usr/local/include/opencv4/opencv2/stitching/warpers.hpp
+ /usr/local/include/opencv4/opencv2/structured_light.hpp
+ /usr/local/include/opencv4/opencv2/structured_light/graycodepattern.hpp
+ /usr/local/include/opencv4/opencv2/structured_light/sinusoidalpattern.hpp
+ /usr/local/include/opencv4/opencv2/structured_light/structured_light.hpp
  /usr/local/include/opencv4/opencv2/video.hpp
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp
  /usr/local/include/opencv4/opencv2/video/tracking.hpp

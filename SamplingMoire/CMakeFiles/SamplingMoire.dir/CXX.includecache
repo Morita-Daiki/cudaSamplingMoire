@@ -13,6 +13,12 @@ stdio.h
 -
 iostream
 -
+numeric
+-
+opencv2/core/hal/interface.h
+-
+opencv2/core/core.hpp
+-
 opencv2/core.hpp
 -
 opencv2/opencv.hpp
@@ -26,6 +32,14 @@ opencv2/core/cuda.hpp
 opencv2/cudaimgproc.hpp
 -
 opencv2/cudawarping.hpp
+-
+opencv2/structured_light.hpp
+-
+opencv2/cudafilters.hpp
+-
+opencv2/imgcodecs.hpp
+-
+opencv2/imgproc.hpp
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
@@ -99,6 +113,10 @@ opencv2/core/check.hpp
 /usr/local/include/opencv4/opencv2/core/check.hpp
 opencv2/core/base.hpp
 -
+
+/usr/local/include/opencv4/opencv2/core/core.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/core/opencv2/core.hpp
 
 /usr/local/include/opencv4/opencv2/core/cuda.hpp
 opencv2/core.hpp
@@ -381,6 +399,12 @@ opencv2/core/cvdef.h
 /usr/local/include/opencv4/opencv2/core/opencv2/core/cvdef.h
 assert.h
 -
+
+/usr/local/include/opencv4/opencv2/cudafilters.hpp
+opencv2/core/cuda.hpp
+/usr/local/include/opencv4/opencv2/opencv2/core/cuda.hpp
+opencv2/imgproc.hpp
+/usr/local/include/opencv4/opencv2/opencv2/imgproc.hpp
 
 /usr/local/include/opencv4/opencv2/cudaimgproc.hpp
 opencv2/core/cuda.hpp
@@ -932,6 +956,24 @@ opencv2/videoio.hpp
 
 /usr/local/include/opencv4/opencv2/opencv_modules.hpp
 
+/usr/local/include/opencv4/opencv2/phase_unwrapping.hpp
+opencv2/phase_unwrapping/phase_unwrapping.hpp
+/usr/local/include/opencv4/opencv2/opencv2/phase_unwrapping/phase_unwrapping.hpp
+opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+/usr/local/include/opencv4/opencv2/opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+
+/usr/local/include/opencv4/opencv2/phase_unwrapping/histogramphaseunwrapping.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/phase_unwrapping/opencv2/core.hpp
+opencv2/imgproc.hpp
+-
+opencv2/phase_unwrapping/phase_unwrapping.hpp
+/usr/local/include/opencv4/opencv2/phase_unwrapping/opencv2/phase_unwrapping/phase_unwrapping.hpp
+
+/usr/local/include/opencv4/opencv2/phase_unwrapping/phase_unwrapping.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/phase_unwrapping/opencv2/core.hpp
+
 /usr/local/include/opencv4/opencv2/photo.hpp
 opencv2/core.hpp
 /usr/local/include/opencv4/opencv2/opencv2/core.hpp
@@ -1039,6 +1081,36 @@ opencv2/stitching/detail/warpers.hpp
 /usr/local/include/opencv4/opencv2/stitching/opencv2/stitching/detail/warpers.hpp
 string
 -
+
+/usr/local/include/opencv4/opencv2/structured_light.hpp
+opencv2/structured_light/structured_light.hpp
+/usr/local/include/opencv4/opencv2/opencv2/structured_light/structured_light.hpp
+opencv2/structured_light/graycodepattern.hpp
+/usr/local/include/opencv4/opencv2/opencv2/structured_light/graycodepattern.hpp
+opencv2/structured_light/sinusoidalpattern.hpp
+/usr/local/include/opencv4/opencv2/opencv2/structured_light/sinusoidalpattern.hpp
+
+/usr/local/include/opencv4/opencv2/structured_light/graycodepattern.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/core.hpp
+opencv2/structured_light/structured_light.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/structured_light/structured_light.hpp
+
+/usr/local/include/opencv4/opencv2/structured_light/sinusoidalpattern.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/core.hpp
+opencv2/imgproc.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/imgproc.hpp
+opencv2/structured_light/structured_light.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/structured_light/structured_light.hpp
+opencv2/phase_unwrapping.hpp
+-
+opencv2/calib3d.hpp
+-
+
+/usr/local/include/opencv4/opencv2/structured_light/structured_light.hpp
+opencv2/core.hpp
+/usr/local/include/opencv4/opencv2/structured_light/opencv2/core.hpp
 
 /usr/local/include/opencv4/opencv2/video.hpp
 opencv2/video/tracking.hpp
