@@ -99,9 +99,9 @@ int main(int argc, char **argv)
     std::cout << "frame length:" << frame_length << std::endl;
     std::cout << "frame / sec :" << fps << std::endl;
 
-    cv::Mat image, gray, gray32;
+    cv::Mat image, image_re, image_im, image_re_32, image_im_32;
     cv::cuda::GpuMat index_image_on_gpu[num * 2];
-    cv::cuda::GpuMat gray_on_gpu, scaled_on_gpu, filterd_on_gpu32, gray_on_gpu32, filterd_on_gpu;
+    cv::cuda::GpuMat gray_on_gpu, scaled_on_gpu, filterd_on_gpu32_re, filterd_on_gpu32_im, gray_on_gpu32, filterd_on_gpu;
 
     cv::Mat kernel_re, kernel_im;
     int kernel_size = num * 2 - 1;
@@ -128,33 +128,31 @@ int main(int argc, char **argv)
         cv::cuda::GpuMat image_on_gpu(image);
         cv::cuda::cvtColor(image_on_gpu, gray_on_gpu, cv::COLOR_BGR2GRAY);
         gray_on_gpu.convertTo(gray_on_gpu32, CV_32FC1);
-        cv::Ptr<cv::cuda::Filter> filter =
+        cv::Ptr<cv::cuda::Filter> filter_re =
             cv::cuda::createLinearFilter(CV_32FC1, CV_32FC1, kernel_re, cv::Point(-1, -1), cv::BORDER_CONSTANT);
-        filter->apply(gray_on_gpu32, filterd_on_gpu32);
+        cv::Ptr<cv::cuda::Filter> filter_im =
+            cv::cuda::createLinearFilter(CV_32FC1, CV_32FC1, kernel_im, cv::Point(-1, -1), cv::BORDER_CONSTANT);
 
-        // cv::cuda::createBoxFilter(gray_on_gpu,filterd_on_gpu,cv::Size(num*2,1))
-        // cv::cuda::
+        filter_re->apply(gray_on_gpu32, filterd_on_gpu32_re);
+        filter_im->apply(gray_on_gpu32, filterd_on_gpu32_im);
 
-        // if (counter == 0)
-        // for (int i = 0; i < 2 * num; i++)
-        // {
-        //     index_image_on_gpu[i] = cv::cuda::GpuMat(gray_on_gpu, cv::Rect(i, 0, width - i, height)).clone();
-        //     index_image_on_gpu[i].download(gray);
-        //     cv::imshow("gray", gray);
-        //     cv::waitKey(10);
-        // }
+        filterd_on_gpu32_re.download(image_re_32);
+        filterd_on_gpu32_re.download(image_im_32);
 
-        // cv::cuda::resize(gray_on_gpu, scaled_on_gpu, cv::Size(1000, 1000));
-        filterd_on_gpu32.download(gray32);
-        gray32.convertTo(gray, CV_8U);
+        double min, max;
+        cv::minMaxLoc(image_re_32, &min, &max, NULL, NULL);
+        image_re_32.convertTo(image_re, CV_8U, 255.0 / (max - min), min * 255.0 / (min - max));
+        image_im_32.convertTo(image_im, CV_8U, 255.0 / (max - min), min * 255.0 / (min - max));
 
-        cv::imshow("gray", gray);
-        cv::waitKey(1);
-
-        if (counter % 10 == 9 || counter == (frame_length - 1))
+        if (/* counter % 10 == 9 ||  */ counter == (frame_length - 1))
+        {
+            std::cout << min << "<= val <=" << max << std::endl;
             print_progress(counter, frame_length);
+            cv::imshow("gray", image_re);
+            cv::waitKey(0);
+        }
 
-        writer << gray;
+        writer << image_re;
     }
     std::cout << "\nend loop" << std::endl;
 
