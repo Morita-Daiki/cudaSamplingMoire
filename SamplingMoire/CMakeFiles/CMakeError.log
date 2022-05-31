@@ -1,21 +1,21 @@
 Performing C++ SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_b03bd/fast && /usr/bin/make -f CMakeFiles/cmTC_b03bd.dir/build.make CMakeFiles/cmTC_b03bd.dir/build
+Run Build Command(s):/usr/bin/make cmTC_672cd/fast && /usr/bin/make -f CMakeFiles/cmTC_672cd.dir/build.make CMakeFiles/cmTC_672cd.dir/build
 make[1]: Entering directory '/home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b03bd.dir/src.cxx.o
-/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_b03bd.dir/src.cxx.o -c /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_b03bd
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b03bd.dir/link.txt --verbose=1
-/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_b03bd.dir/src.cxx.o  -o cmTC_b03bd 
-/usr/bin/ld: CMakeFiles/cmTC_b03bd.dir/src.cxx.o: in function `main':
+Building CXX object CMakeFiles/cmTC_672cd.dir/src.cxx.o
+/usr/bin/c++    -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_672cd.dir/src.cxx.o -c /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_672cd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_672cd.dir/link.txt --verbose=1
+/usr/bin/c++   -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_672cd.dir/src.cxx.o  -o cmTC_672cd 
+/usr/bin/ld: CMakeFiles/cmTC_672cd.dir/src.cxx.o: in function `main':
 src.cxx:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.cxx:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.cxx:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_b03bd.dir/build.make:87: cmTC_b03bd] Error 1
+make[1]: *** [CMakeFiles/cmTC_672cd.dir/build.make:87: cmTC_672cd] Error 1
 make[1]: Leaving directory '/home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_b03bd/fast] Error 2
+make: *** [Makefile:121: cmTC_672cd/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_05f09/fast && /usr/bin/make -f CMakeFiles/cmTC_05f09.dir/build.make CMakeFiles/cmTC_05f09.dir/build
+Run Build Command(s):/usr/bin/make cmTC_ae021/fast && /usr/bin/make -f CMakeFiles/cmTC_ae021.dir/build.make CMakeFiles/cmTC_ae021.dir/build
 make[1]: Entering directory '/home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_05f09.dir/CheckFunctionExists.cxx.o
-/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_05f09.dir/CheckFunctionExists.cxx.o -c /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
-Linking CXX executable cmTC_05f09
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_05f09.dir/link.txt --verbose=1
-/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_05f09.dir/CheckFunctionExists.cxx.o  -o cmTC_05f09  -lpthreads 
+Building CXX object CMakeFiles/cmTC_ae021.dir/CheckFunctionExists.cxx.o
+/usr/bin/c++    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ae021.dir/CheckFunctionExists.cxx.o -c /home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CheckLibraryExists/CheckFunctionExists.cxx
+Linking CXX executable cmTC_ae021
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ae021.dir/link.txt --verbose=1
+/usr/bin/c++   -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_ae021.dir/CheckFunctionExists.cxx.o  -o cmTC_ae021  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_05f09.dir/build.make:87: cmTC_05f09] Error 1
+make[1]: *** [CMakeFiles/cmTC_ae021.dir/build.make:87: cmTC_ae021] Error 1
 make[1]: Leaving directory '/home/robo/cuda_cv_test/SamplingMoire/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_05f09/fast] Error 2
+make: *** [Makefile:121: cmTC_ae021/fast] Error 2
 
 
 
