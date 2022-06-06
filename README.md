@@ -13,7 +13,7 @@
 
 ただし、
 <image src="https://latex.codecogs.com/svg.image?w(n)=w(-n)=0&space;&space;"/>
-よりフィルタサイズを削れる。
+だからフィルタサイズを削れる。
 
 ## DsiplayImage
 表示のテスト
