@@ -2,18 +2,21 @@
 
 ## Sampling Moire
 サンプリングモアレのopencv_cuda実装版 \
-ダウンサンプリング＆内挿補完(モアレ化)を重み付け線形フィルターとして実装 \
-<image src="https://latex.codecogs.com/svg.image?moire(x)=\sum_{k=-n}^{n}&space;image(x&plus;k)\bullet&space;w(k)\bullet&space;\exp\left&space;(&space;\frac{-2\pi&space;k}{n}i&space;\right&space;)&space;\\"/>
+### ダウンサンプリング＆内挿補完(モアレ化)を重み付け線形フィルターとして実装 \
 
-<image src="https://latex.codecogs.com/svg.image?moire(x)_{re}=\sum_{k=-n}^{n}&space;image(x&plus;k)\bullet&space;w(k)\bullet&space;\cos\left&space;(&space;\frac{-2\pi&space;k}{n}&space;\right&space;)&space;\\"/>
+https://github.com/Morita-Daiki/cuda_cv_test/blob/e81830b98de431b9ad3644200a59ea09cce99225/SamplingMoire/src/main.cpp#L136-L137
 
-<image src="https://latex.codecogs.com/svg.image?moire(x)_{im}=\sum_{k=-n}^{n}&space;image(x&plus;k)\bullet&space;w(k)\bullet&space;\sin\left&space;(&space;\frac{-2\pi&space;k}{n}&space;\right&space;)&space;\\"/>
-
-<image src="https://latex.codecogs.com/svg.image?w(k)=n-|k|"/>
-
+$$ moire(x)=\sum_{k=-n}^{n} Image(x+k) \bullet w(k) \bullet \exp\left(\frac{-2\pi k i}{n}\right) $$
 ただし、
-<image src="https://latex.codecogs.com/svg.image?w(n)=w(-n)=0&space;&space;"/>
+$$ w(k)=(n-|k|)/{n^2}\rightarrow  w(n)=w(-n)=0$$
 だからフィルタサイズを削れる。
+
+### モアレを位相解析
+
+https://github.com/Morita-Daiki/cuda_cv_test/blob/e81830b98de431b9ad3644200a59ea09cce99225/SamplingMoire/src/main.cpp#L147
+
+$$ phase(x)=\arg({moire(x)}) $$
+
 
 ## DsiplayImage
 表示のテスト
