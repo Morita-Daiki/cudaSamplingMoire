@@ -5,10 +5,16 @@
 
 https://github.com/Morita-Daiki/cudaSamplingMoire/blob/e81830b98de431b9ad3644200a59ea09cce99225/SamplingMoire/src/main.cpp#L136-L137
 
-$$ moire(x)=\sum_{k=-n}^{n} Image(x+k) \bullet w(k) \bullet \exp\left(\frac{-2\pi k i}{n}\right) $$
+$$
+moire(x)=\sum_{k=-n}^{n} Image(x+k) \bullet w(k) \bullet \exp\left(\frac{-2\pi k i}{n}\right)
+$$
+
 ただし、
-$$ w(k)=(n-|k|)/{n^2}\rightarrow  w(\pm n)=0$$
-だからフィルタサイズを削れる。
+
+$$
+w(k)=\frac{n-|k|}{n^2} \rightarrow w(\pm n)=0
+$$
+
 
 ### モアレを位相解析
 
